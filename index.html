@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Franco</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-    <h1>hola</h1>
+    <div id='app' class="container" >
+      
+      
+      <div class="input-group mb-1" style="margin-top:10px">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Producto</span>
+        </div>
+        <select v-model="arrayProductos" class="form-control" name="" id="">
+          <!-- <option v-for="item in arrayDatos" value="pantalon">{{item.nombre}}</option>llenar la lista con el array -->
+          <option  v-for="item in arrayDatos" v-text="item.nombre" :value="item"></option>
+        </select>
+      </div>
+      
+      <div class="input-group mb-1"> <!-- colocarle a una entrada adelante o atras algun texto -->
+        <div class="input-group-prepend"><!-- colocar al lado el texto -->
+          <span class="input-group-text" id="inputGroup-sizing-default">Cantidad</span>
+        </div><!--la entrada-->
+        <input type="number" v-model.number="cantidad" min=0 class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+      
+      <div  ><button style="margin-top: 10px; width: 100px" type="button" v-on:click="validar" class="btn btn-primary form-control" >Validar</button></div>
+      <table style="margin-top: 40px" class="table table-striped  table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr v-for="objeto in arrayRegistros">
+            <td v-text="objeto.nombre"></td>
+            <td v-text="objeto.precio"></td>
+            <td v-text="objeto.cantidad"></td>
+            <td v-text="objeto.total"></td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
